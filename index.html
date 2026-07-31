@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#ff0000">
+    <link rel="icon" href="icons/1_1761942992.jpg">
+    <link rel="apple-touch-icon" href="icons/1_1761942992.jpg">
+    <title>Galerie 66</title>
+</head>
+<body>
+    <p>Premierement</p>
+    <nav class="nav_logo">
+        <div class="logo">
+            <p>deuxiemement</p>
+        </div>
+        
+    </nav>
+
+    <main>
+        <form id="formAjout" class="form-ajout">
+            <input type="file" id="champFichier" accept="image/*" required>
+            <input type="text" id="champDescription" placeholder="Description de la photo" required>
+            <button type="submit">Ajouter la photo</button>
+        </form>
+
+        <div id="galerie" class="galerie"></div>
+    </main>
+
+    <script src="db.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>

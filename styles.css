@@ -1,0 +1,68 @@
+.nav_logo {
+    background: red;
+    margin: 20px;
+    padding: 10px 10px 10px 10px;
+
+}
+.logo {
+    background: white;
+    width: 80px;
+    height: 60px;
+    margin-right: auto;
+}
+
+.galerie {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 20px;
+    padding: 20px;
+}
+
+.form-ajout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    align-items: center;
+    padding: 20px;
+    background: #f5f5f5;
+}
+
+.form-ajout input[type="text"] {
+    flex: 1;
+    min-width: 150px;
+    padding: 8px;
+}
+
+.form-ajout button {
+    padding: 8px 16px;
+    background: red;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.carte {
+    background: white;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+}
+
+.carte img {
+    width: 100%;
+    height: 160px;
+    object-fit: cover;
+    display: block;
+}
+
+.carte .description {
+    margin: 0;
+    padding: 10px;
+    font-size: 14px;
+    color: #333;
+    text-align: center;
+}
