@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#c0392b">
+    <link rel="icon" href="icons/icon-192.png">
+    <title>Connexion administrateur — Galerie 66</title>
+</head>
+<body>
+    <nav class="nav_logo">
+        <div class="logo">
+            <p>G66</p>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="index.html">Accueil</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main class="page-connexion">
+        <form id="formConnexion" class="carte-connexion">
+            <h1>Espace administrateur</h1>
+            <p class="sous-titre">Connecte-toi pour gérer la galerie et les réservations</p>
+            <input type="text" id="champUsername" placeholder="Identifiant" required autofocus autocomplete="username">
+            <input type="password" id="champMotDePasse" placeholder="Mot de passe" required autocomplete="current-password">
+            <button type="submit">Se connecter</button>
+            <p id="messageErreur" class="message-erreur"></p>
+        </form>
+        <p class="lien-visiteur"><a href="index.html">&larr; Retour à l'accueil</a></p>
+    </main>
+
+    <script src="api.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        const formConnexion = document.getElementById("formConnexion");
+        const messageErreur = document.getElementById("messageErreur");
+
+        formConnexion.addEventListener("submit", async (event) => {
+            event.preventDefault();
+            const username = document.getElementById("champUsername").value.trim();
+            const motDePasse = document.getElementById("champMotDePasse").value;
+
+            const boutonConnexion = formConnexion.querySelector("button[type='submit']");
+            boutonConnexion.disabled = true;
+
+            try {
+                const connecte = await tenterConnexion(username, motDePasse);
+                if (connecte) {
+                    window.location.href = "admin.html";
+                } else {
+                    messageErreur.textContent = "Identifiant ou mot de passe incorrect.";
+                }
+            } catch (erreur) {
+                messageErreur.textContent = "Erreur de connexion au serveur.";
+            } finally {
+                boutonConnexion.disabled = false;
+            }
+        });
+    </script>
+</body>
+</html>

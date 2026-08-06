@@ -1,68 +1,739 @@
-.nav_logo {
-    background: red;
-    margin: 20px;
-    padding: 10px 10px 10px 10px;
-
+/* ==================== VARIABLES ==================== */
+:root {
+    --couleur-primaire: #c0392b;
+    --couleur-primaire-fonce: #922b21;
+    --couleur-accent: #f39c12;
+    --couleur-fond: #f7f5f3;
+    --couleur-carte: #ffffff;
+    --couleur-texte: #2c2c2c;
+    --couleur-texte-clair: #6b6b6b;
+    --ombre-douce: 0 4px 16px rgba(0, 0, 0, 0.08);
+    --ombre-forte: 0 8px 28px rgba(0, 0, 0, 0.16);
+    --rayon: 12px;
+    --transition: all 0.25s ease;
 }
+
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: "Segoe UI", "Helvetica Neue", Arial, sans-serif;
+    background: var(--couleur-fond);
+    color: var(--couleur-texte);
+    line-height: 1.5;
+}
+
+section {
+    background: transparent;
+    margin: 0;
+    padding: 0;
+}
+
+/* ==================== NAVIGATION ==================== */
+.nav_logo {
+    background: linear-gradient(135deg, var(--couleur-primaire), var(--couleur-primaire-fonce));
+    margin: 0;
+    padding: 14px 28px;
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    box-shadow: var(--ombre-douce);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
 .logo {
     background: white;
-    width: 80px;
-    height: 60px;
+    width: 48px;
+    height: 48px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: 700;
+    color: var(--couleur-primaire);
+    font-size: 15px;
+    letter-spacing: 0.5px;
     margin-right: auto;
+    box-shadow: var(--ombre-douce);
+}
+
+.logo p {
+    margin: 0;
+}
+
+.menu ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    gap: 6px;
+}
+
+.menu ul li {
+    margin: 0;
+}
+
+.menu ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 999px;
+    transition: var(--transition);
+}
+
+.menu ul li a:hover,
+.menu ul li a.lien-actif {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.btn-deconnexion {
+    padding: 8px 18px;
+    background: white;
+    color: var(--couleur-primaire);
+    border: none;
+    border-radius: 999px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-deconnexion:hover {
+    background: #ffe8e4;
+}
+
+/* ==================== HERO ==================== */
+.hero {
+    text-align: center;
+    padding: 60px 20px 40px;
+    background: linear-gradient(180deg, #fff 0%, var(--couleur-fond) 100%);
+}
+
+.hero h1 {
+    font-size: 2.6rem;
+    margin: 0 0 12px;
+    color: var(--couleur-primaire-fonce);
+}
+
+.hero p {
+    color: var(--couleur-texte-clair);
+    font-size: 1.05rem;
+    max-width: 480px;
+    margin: 0 auto;
+}
+
+.titre-page {
+    max-width: 1100px;
+    margin: 28px auto 0;
+    padding: 0 20px;
+    color: var(--couleur-primaire-fonce);
+}
+
+/* ==================== GALERIE ==================== */
+main {
+    max-width: 1100px;
+    margin: 0 auto;
 }
 
 .galerie {
     display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
-    gap: 20px;
-    padding: 20px;
+    grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 22px;
+    padding: 28px 20px 50px;
 }
 
-.form-ajout {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-    align-items: center;
-    padding: 20px;
-    background: #f5f5f5;
-}
-
-.form-ajout input[type="text"] {
-    flex: 1;
-    min-width: 150px;
-    padding: 8px;
-}
-
-.form-ajout button {
-    padding: 8px 16px;
-    background: red;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    cursor: pointer;
+.galerie-vide {
+    grid-column: 1 / -1;
+    text-align: center;
+    color: var(--couleur-texte-clair);
+    padding: 40px 0;
 }
 
 .carte {
-    background: white;
-    border: 1px solid #ddd;
-    border-radius: 8px;
+    background: var(--couleur-carte);
+    border: none;
+    border-radius: var(--rayon);
     overflow: hidden;
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: var(--ombre-douce);
     display: flex;
     flex-direction: column;
+    transition: var(--transition);
+}
+
+.carte:hover {
+    transform: translateY(-4px);
+    box-shadow: var(--ombre-forte);
 }
 
 .carte img {
     width: 100%;
-    height: 160px;
+    height: 180px;
     object-fit: cover;
     display: block;
 }
 
+.carte-contenu {
+    padding: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.nom-produit {
+    margin: 0;
+    font-size: 16px;
+    color: var(--couleur-texte);
+}
+
 .carte .description {
     margin: 0;
-    padding: 10px;
+    font-size: 13.5px;
+    color: var(--couleur-texte-clair);
+}
+
+.taille-produit {
+    margin: 0;
+    font-size: 12.5px;
+    color: var(--couleur-texte-clair);
+    background: #f2f2f2;
+    display: inline-block;
+    padding: 2px 8px;
+    border-radius: 999px;
+    width: fit-content;
+}
+
+.carte .prix {
+    margin: 4px 0 0;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--couleur-primaire);
+}
+
+.btn-ajouter-panier {
+    margin-top: 8px;
+    padding: 9px;
+    background: var(--couleur-primaire);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-ajouter-panier:hover {
+    background: var(--couleur-primaire-fonce);
+}
+
+/* ==================== PANIER ==================== */
+.panneau-panier {
+    width: 320px;
+}
+
+.panier-vide {
+    color: var(--couleur-texte-clair);
     font-size: 14px;
-    color: #333;
     text-align: center;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.panier-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 0;
+    border-bottom: 1px solid #eee;
+}
+
+.panier-item img {
+    width: 48px;
+    height: 48px;
+    object-fit: cover;
+    border-radius: 6px;
+    flex-shrink: 0;
+}
+
+.panier-item-info {
+    flex: 1;
+}
+
+.panier-item-nom {
+    margin: 0;
+    font-size: 13.5px;
+    font-weight: 600;
+}
+
+.panier-item-prix {
+    margin: 4px 0 0;
+    font-size: 12.5px;
+    color: var(--couleur-texte-clair);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.panier-qte-moins,
+.panier-qte-plus {
+    width: 20px;
+    height: 20px;
+    border: 1px solid #ddd;
+    background: white;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 1;
+}
+
+.panier-retirer {
+    background: none;
+    border: none;
+    color: #999;
+    cursor: pointer;
+    font-size: 14px;
+    flex-shrink: 0;
+}
+
+.panier-retirer:hover {
+    color: var(--couleur-primaire);
+}
+
+.panier-total-ligne {
+    display: flex;
+    justify-content: space-between;
+    padding-top: 12px;
+    margin-top: 4px;
+    font-size: 14px;
+}
+
+.btn-voir-panier {
+    display: block;
+    text-align: center;
+    margin-top: 12px;
+    padding: 10px;
+    background: var(--couleur-primaire);
+    color: white;
+    text-decoration: none;
+    border-radius: 8px;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.btn-voir-panier:hover {
+    background: var(--couleur-primaire-fonce);
+}
+
+/* Résumé du panier au-dessus du formulaire de réservation */
+.resume-reservation {
+    background: #faf5f4;
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 18px;
+    font-size: 13.5px;
+}
+
+.resume-reservation ul {
+    margin: 0;
+    padding-left: 18px;
+}
+
+.resume-reservation li {
+    margin-bottom: 4px;
+}
+
+.resume-total {
+    margin: 8px 0 0;
+    font-weight: 700;
+    color: var(--couleur-primaire-fonce);
+}
+
+.resume-vide {
+    margin: 0;
+    color: var(--couleur-texte-clair);
+    text-align: center;
+}
+
+/* Produits commandés affichés dans les notifications admin */
+.notif-produits {
+    margin: 6px 0 0;
+    padding-left: 16px;
+    font-size: 12px;
+    color: var(--couleur-texte);
+}
+
+.notif-total {
+    margin: 4px 0 0;
+    font-size: 12.5px;
+    font-weight: 700;
+    color: var(--couleur-primaire-fonce);
+}
+
+/* ==================== FORMULAIRE ADMIN (ajout photo) ==================== */
+.form-ajout {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    align-items: center;
+    padding: 22px 20px;
+    background: var(--couleur-carte);
+    margin: 20px 20px 0;
+    border-radius: var(--rayon);
+    box-shadow: var(--ombre-douce);
+}
+
+.form-ajout input[type="file"] {
+    flex: 1;
+    min-width: 200px;
+}
+
+.form-ajout input[type="text"],
+.form-ajout input[type="number"] {
+    flex: 1;
+    min-width: 140px;
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.form-ajout button,
+.ajoute_profil button {
+    padding: 10px 22px;
+    background: var(--couleur-primaire);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.form-ajout button:hover,
+.ajoute_profil button:hover {
+    background: var(--couleur-primaire-fonce);
+}
+
+/* ==================== FORMULAIRE RÉSERVATION ==================== */
+.reserve {
+    display: flex;
+    justify-content: center;
+    padding: 20px 20px 60px;
+}
+
+.profil {
+    background: var(--couleur-carte);
+    padding: 32px;
+    border-radius: var(--rayon);
+    box-shadow: var(--ombre-douce);
+    width: 100%;
+    max-width: 420px;
+}
+
+.profil h2 {
+    margin: 0 0 6px;
+    color: var(--couleur-primaire-fonce);
+    text-align: center;
+}
+
+.sous-titre {
+    color: var(--couleur-texte-clair);
+    font-size: 14px;
+    text-align: center;
+    margin: 0 0 20px;
+}
+
+.ajoute_profil {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.liste {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.liste label {
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--couleur-texte-clair);
+    margin-bottom: -8px;
+}
+
+.ajoute_profil input {
+    padding: 10px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.ajoute_profil input:focus {
+    outline: none;
+    border-color: var(--couleur-primaire);
+}
+
+.message-reservation {
+    text-align: center;
+    font-size: 14px;
+    min-height: 18px;
+    margin: 0;
+}
+
+.message-succes {
+    color: #1e8449;
+}
+
+.message-erreur {
+    color: var(--couleur-primaire);
+}
+
+/* ==================== PAGE DE CONNEXION ==================== */
+.page-connexion {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 70vh;
+    padding: 20px;
+}
+
+.carte-connexion {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    width: 100%;
+    max-width: 340px;
+    background: var(--couleur-carte);
+    padding: 32px;
+    border-radius: var(--rayon);
+    box-shadow: var(--ombre-douce);
+}
+
+.carte-connexion h1 {
+    font-size: 1.3rem;
+    margin: 0;
+    text-align: center;
+    color: var(--couleur-primaire-fonce);
+}
+
+.carte-connexion input {
+    padding: 11px 12px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    font-size: 14px;
+}
+
+.carte-connexion button {
+    padding: 11px;
+    background: var(--couleur-primaire);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    font-weight: 600;
+    transition: var(--transition);
+}
+
+.carte-connexion button:hover {
+    background: var(--couleur-primaire-fonce);
+}
+
+.lien-visiteur {
+    margin-top: 18px;
+}
+
+.lien-visiteur a {
+    color: var(--couleur-texte-clair);
+    text-decoration: none;
+    font-size: 14px;
+}
+
+.lien-visiteur a:hover {
+    text-decoration: underline;
+}
+
+/* ==================== NOTIFICATIONS ADMIN ==================== */
+.notif-conteneur {
+    position: relative;
+}
+
+.bouton-notif {
+    position: relative;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    color: white;
+    font-size: 20px;
+    width: 42px;
+    height: 42px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: var(--transition);
+}
+
+.bouton-notif:hover {
+    background: rgba(255, 255, 255, 0.3);
+}
+
+.pastille-notif {
+    position: absolute;
+    top: -2px;
+    right: -2px;
+    background: var(--couleur-accent);
+    color: white;
+    font-size: 11px;
+    font-weight: 700;
+    min-width: 18px;
+    height: 18px;
+    border-radius: 999px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 0 4px;
+    border: 2px solid var(--couleur-primaire-fonce);
+}
+
+.panneau-notif {
+    position: absolute;
+    top: 54px;
+    right: 0;
+    width: 340px;
+    max-height: 420px;
+    overflow-y: auto;
+    background: var(--couleur-carte);
+    border-radius: var(--rayon);
+    box-shadow: var(--ombre-forte);
+    padding: 16px;
+    opacity: 0;
+    transform: translateY(-8px);
+    pointer-events: none;
+    transition: var(--transition);
+    z-index: 200;
+}
+
+.panneau-notif.panneau-ouvert {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.panneau-notif h3 {
+    margin: 0 0 12px;
+    font-size: 15px;
+    color: var(--couleur-primaire-fonce);
+}
+
+.notif-vide {
+    color: var(--couleur-texte-clair);
+    font-size: 14px;
+    text-align: center;
+    padding: 20px 0;
+    margin: 0;
+}
+
+.notif-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 12px;
+    border-radius: 8px;
+    background: #f9f9f9;
+    margin-bottom: 8px;
+}
+
+.notif-item-nonlue {
+    background: #fdf1ee;
+    border-left: 3px solid var(--couleur-primaire);
+}
+
+.notif-nom {
+    margin: 0;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.notif-details {
+    margin: 2px 0;
+    font-size: 12.5px;
+    color: var(--couleur-texte-clair);
+}
+
+.notif-date {
+    margin: 0;
+    font-size: 11px;
+    color: #999;
+}
+
+.notif-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex-shrink: 0;
+}
+
+.notif-actions button {
+    font-size: 11px;
+    padding: 5px 8px;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+
+.notif-btn-lu {
+    background: var(--couleur-primaire);
+    color: white;
+}
+
+.notif-btn-suppr {
+    background: #eee;
+    color: #555;
+}
+
+.notif-btn-lu:hover {
+    background: var(--couleur-primaire-fonce);
+}
+
+.notif-btn-suppr:hover {
+    background: #ddd;
+}
+
+/* ==================== PIED DE PAGE ==================== */
+.pied-de-page {
+    text-align: center;
+    padding: 24px;
+    color: var(--couleur-texte-clair);
+    font-size: 13px;
+}
+
+/* ==================== RESPONSIVE ==================== */
+@media (max-width: 600px) {
+    .nav_logo {
+        flex-wrap: wrap;
+        padding: 12px 16px;
+    }
+
+    .menu ul {
+        gap: 2px;
+    }
+
+    .menu ul li a {
+        padding: 6px 10px;
+        font-size: 14px;
+    }
+
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .panneau-notif {
+        width: 90vw;
+        right: -10px;
+    }
 }

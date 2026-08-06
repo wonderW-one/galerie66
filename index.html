@@ -1,36 +1,90 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="styles.css">
     <link rel="manifest" href="manifest.json">
-    <meta name="theme-color" content="#ff0000">
-    <link rel="icon" href="icons/1_1761942992.jpg">
-    <link rel="apple-touch-icon" href="icons/1_1761942992.jpg">
+    <meta name="theme-color" content="#c0392b">
+    <link rel="icon" href="icons/icon-192.png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
     <title>Galerie 66</title>
 </head>
 <body>
-    <p>Premierement</p>
-    <nav class="nav_logo">
-        <div class="logo">
-            <p>deuxiemement</p>
+    <section>
+        <nav class="nav_logo">
+            <div class="logo">
+                <p>G66</p>
+            </div>
+            <div class="menu">
+                <ul>
+                    <li><a href="#accueil" class="lien-actif">Accueil</a></li>
+                    <li><a href="#galerie">Produits</a></li>
+                    <li><a href="login.html">Admin</a></li>
+                </ul>
+            </div>
+
+            <div class="notif-conteneur">
+                <button id="boutonPanier" class="bouton-notif" aria-label="Panier">
+                    🛒
+                    <span id="pastillePanier" class="pastille-notif" hidden>0</span>
+                </button>
+                <div id="panneauPanier" class="panneau-notif panneau-panier">
+                    <h3>Mon panier</h3>
+                    <div id="listePanier" class="liste-notif"></div>
+                    <div class="panier-total-ligne">
+                        <span>Total</span>
+                        <strong id="totalPanier">0.00 $</strong>
+                    </div>
+                    <a href="#reserver" class="btn-voir-panier">Réserver ces produits</a>
+                </div>
+            </div>
+        </nav>
+
+        <header class="hero" id="accueil">
+            <h1>Galerie 66</h1>
+            <p>Découvrez nos produits et ajoutez-les à votre panier pour réserver.</p>
+        </header>
+
+        <main>
+            <div id="galerie" class="galerie"></div>
+        </main>
+    </section>
+
+    <div class="reserve" id="reserver">
+        <div class="profil">
+            <h2>Faire une réservation</h2>
+            <p class="sous-titre">Vérifiez votre sélection puis laissez-nous vos coordonnées.</p>
+
+            <div id="resumeReservation" class="resume-reservation"></div>
+
+            <form id="ajouteprofile" class="ajoute_profil">
+                <div class="liste">
+                    <label for="nom">Nom</label>
+                    <input type="text" id="nom" placeholder="Nom" required>
+
+                    <label for="prenom">Prénom</label>
+                    <input type="text" id="prenom" placeholder="Prénom" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" placeholder="exemple@gmail.com" required>
+
+                    <label for="tel">Téléphone</label>
+                    <input type="tel" id="tel" placeholder="+257....." required>
+                </div>
+                <button type="submit">Réserver</button>
+            </form>
         </div>
-        
-    </nav>
+    </div>
 
-    <main>
-        <form id="formAjout" class="form-ajout">
-            <input type="file" id="champFichier" accept="image/*" required>
-            <input type="text" id="champDescription" placeholder="Description de la photo" required>
-            <button type="submit">Ajouter la photo</button>
-        </form>
+    <footer class="pied-de-page">
+        <p>&copy; 2026 Galerie 66. Tous droits réservés.</p>
+    </footer>
 
-        <div id="galerie" class="galerie"></div>
-    </main>
-
-    <script src="db.js"></script>
+    <script src="api.js"></script>
+    <script src="panier.js"></script>
+    <script src="galerie-commun.js"></script>
     <script src="script.js"></script>
 </body>
 </html>

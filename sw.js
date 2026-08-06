@@ -1,19 +1,24 @@
 // Nom et version du cache : change la version à chaque mise à jour du site
 // pour forcer le rechargement des fichiers.
-const CACHE_NAME = "galerie66-cache-v1";
+const CACHE_NAME = "galerie66-cache-v5";
 
 // Liste des fichiers essentiels à mettre en cache dès l'installation.
-// Ajoute ici toutes tes photos/pages si tu veux qu'elles soient
-// disponibles hors-ligne dès la première visite.
+// Note : le catalogue de produits et les réservations viennent maintenant
+// de l'API Django, pas de ce cache — ce cache ne sert plus qu'à afficher
+// la coquille de l'app hors-ligne (pas les données à jour).
 const FICHIERS_A_CACHER = [
     "./",
     "./index.html",
+    "./admin.html",
+    "./login.html",
     "./styles.css",
     "./script.js",
-    "./db.js",
+    "./script-admin.js",
+    "./galerie-commun.js",
+    "./panier.js",
+    "./auth.js",
+    "./api.js",
     "./manifest.json",
-    "./icons/icon-192.png",
-    "./icons/icon-512.png",
 ];
 
 // --- Installation : on met en cache les fichiers de base ---
@@ -41,7 +46,13 @@ self.addEventListener("activate", (event) => {
 });
 
 // --- Interception des requêtes : cache d'abord, réseau en secours ---
+// Exception : les appels vers l'API Django ne sont JAMAIS servis depuis le
+// cache (produits/réservations doivent toujours être à jour, pas figés).
 self.addEventListener("fetch", (event) => {
+    if (event.request.url.includes("/api/")) {
+        return; // laisse la requête suivre son cours normal (réseau direct)
+    }
+
     event.respondWith(
         caches.match(event.request).then((reponseEnCache) => {
             if (reponseEnCache) {
@@ -49,14 +60,13 @@ self.addEventListener("fetch", (event) => {
             }
             return fetch(event.request)
                 .then((reponseReseau) => {
-                    // on met aussi en cache les nouvelles ressources visitées
                     return caches.open(CACHE_NAME).then((cache) => {
                         cache.put(event.request, reponseReseau.clone());
                         return reponseReseau;
                     });
                 })
                 .catch(() => {
-                    // pas de réseau et pas en cache : on peut renvoyer une page de secours ici
+                    // pas de réseau et pas en cache : on revient à la page publique
                     return caches.match("./index.html");
                 });
         })

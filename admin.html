@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#c0392b">
+    <link rel="icon" href="icons/icon-192.png">
+    <link rel="apple-touch-icon" href="icons/icon-192.png">
+    <title>Galerie 66 — Administration</title>
+    <script src="api.js"></script>
+    <script src="auth.js"></script>
+    <script>
+        // Vérifie l'authentification AVANT que la page ne s'affiche
+        protegerPageAdmin();
+    </script>
+</head>
+<body>
+    <nav class="nav_logo">
+        <div class="logo">
+            <p>G66</p>
+        </div>
+        <div class="menu">
+            <ul>
+                <li><a href="index.html">Voir le site</a></li>
+            </ul>
+        </div>
+
+        <div class="notif-conteneur">
+            <button id="boutonNotif" class="bouton-notif" aria-label="Notifications">
+                🔔
+                <span id="pastilleNotif" class="pastille-notif" hidden>0</span>
+            </button>
+            <div id="panneauNotif" class="panneau-notif">
+                <h3>Demandes de réservation</h3>
+                <div id="listeNotif" class="liste-notif"></div>
+            </div>
+        </div>
+
+        <button id="btnDeconnexion" class="btn-deconnexion">Déconnexion</button>
+    </nav>
+
+    <main>
+        <h1 class="titre-page">Administration — Produits</h1>
+        <form id="formAjout" class="form-ajout">
+            <input type="file" id="champFichier" accept="image/*" required>
+            <input type="text" id="champNom" placeholder="Nom du produit" required>
+            <input type="text" id="champDescription" placeholder="Description" required>
+            <input type="text" id="champTaille" placeholder="Taille (ex: M, 42, 10L...)">
+            <input type="number" id="champPrix" placeholder="Prix ($)" step="0.01" min="0" required>
+            <button type="submit">Ajouter le produit</button>
+        </form>
+
+        <div id="galerie" class="galerie"></div>
+    </main>
+
+    <script src="galerie-commun.js"></script>
+    <script src="script-admin.js"></script>
+    <script>
+        document.getElementById("btnDeconnexion").addEventListener("click", deconnecter);
+    </script>
+</body>
+</html>
