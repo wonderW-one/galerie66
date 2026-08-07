@@ -112,7 +112,7 @@ function rafraichirAffichagePanier() {
 
     const totalPanier = document.getElementById("totalPanier");
     if (totalPanier) {
-        totalPanier.textContent = `${montantTotal.toFixed(2)} $`;
+        totalPanier.textContent = `${montantTotal.toFixed(2)} Fbu`;
     }
 
     // Résumé au-dessus du formulaire de réservation
@@ -125,9 +125,9 @@ function rafraichirAffichagePanier() {
             resumeReservation.innerHTML =
                 "<ul>" +
                 panier
-                    .map((p) => `<li>${p.quantite} × ${p.nom}${p.taille ? ` (${p.taille})` : ""} — ${(p.prix * p.quantite).toFixed(2)} $</li>`)
+                    .map((p) => `<li>${p.quantite} × ${p.nom}${p.taille ? ` (${p.taille})` : ""} — ${(p.prix * p.quantite).toFixed(2)} Fbu</li>`)
                     .join("") +
-                `</ul><p class="resume-total">Total : ${montantTotal.toFixed(2)} $</p>`;
+                `</ul><p class="resume-total">Total : ${montantTotal.toFixed(2)} Fbu</p>`;
         }
     }
 }
