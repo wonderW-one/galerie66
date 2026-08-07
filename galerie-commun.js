@@ -51,7 +51,7 @@ function afficherGalerie(liste, conteneurId = "galerie", avecPanier = true) {
         if (photo.prix) {
             const prix = document.createElement("p");
             prix.classList.add("prix");
-            prix.textContent = `${Number(photo.prix).toFixed(2)} $`;
+            prix.textContent = `${Number(photo.prix).toFixed(2)} Fbu`;
             contenu.appendChild(prix);
         }
 
