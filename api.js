@@ -5,7 +5,7 @@
 
 // ⚠️ À remplacer par l'URL réelle de ton backend déployé (Render, etc.)
 // const API_BASE_URL = "https://TON-BACKEND.onrender.com/api";
-const API_BASE_URL = "http://127.0.0.1:8000/api";
+const API_BASE_URL = "wonderwone.pythonanywhere.com/api";
 const CLE_ACCESS = "galerie66_access_token";
 const CLE_REFRESH = "galerie66_refresh_token";
 
