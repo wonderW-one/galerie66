@@ -107,6 +107,44 @@ section {
     background: #ffe8e4;
 }
 
+/* ==================== HAMBURGER ==================== */
+.bouton-hamburger {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 42px;
+    height: 42px;
+    background: rgba(255, 255, 255, 0.15);
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    order: 3;
+    flex-shrink: 0;
+}
+
+.bouton-hamburger span {
+    display: block;
+    width: 22px;
+    height: 2px;
+    background: white;
+    margin: 0 auto;
+    border-radius: 2px;
+    transition: var(--transition);
+}
+
+.bouton-hamburger.actif span:nth-child(1) {
+    transform: translateY(7px) rotate(45deg);
+}
+
+.bouton-hamburger.actif span:nth-child(2) {
+    opacity: 0;
+}
+
+.bouton-hamburger.actif span:nth-child(3) {
+    transform: translateY(-7px) rotate(-45deg);
+}
+
 /* ==================== HERO ==================== */
 .hero {
     text-align: center;
@@ -115,14 +153,14 @@ section {
 }
 
 .hero h1 {
-    font-size: 2.6rem;
+    font-size: clamp(1.7rem, 5vw, 2.6rem);
     margin: 0 0 12px;
     color: var(--couleur-primaire-fonce);
 }
 
 .hero p {
     color: var(--couleur-texte-clair);
-    font-size: 1.05rem;
+    font-size: clamp(0.9rem, 2.5vw, 1.05rem);
     max-width: 480px;
     margin: 0 auto;
 }
@@ -713,27 +751,160 @@ main {
 }
 
 /* ==================== RESPONSIVE ==================== */
-@media (max-width: 600px) {
-    .nav_logo {
-        flex-wrap: wrap;
-        padding: 12px 16px;
+
+/* ---- Tablette (≤ 900px) ---- */
+@media (max-width: 900px) {
+    main {
+        padding: 0 4px;
     }
 
-    .menu ul {
-        gap: 2px;
-    }
-
-    .menu ul li a {
-        padding: 6px 10px;
-        font-size: 14px;
-    }
-
-    .hero h1 {
-        font-size: 2rem;
+    .galerie {
+        grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+        gap: 16px;
     }
 
     .panneau-notif {
-        width: 90vw;
-        right: -10px;
+        width: 300px;
+    }
+}
+
+/* ---- Mobile / hamburger actif (≤ 700px) ---- */
+@media (max-width: 700px) {
+    .nav_logo {
+        flex-wrap: wrap;
+        padding: 10px 14px;
+        gap: 10px;
+    }
+
+    .logo {
+        width: 40px;
+        height: 40px;
+        font-size: 13px;
+        margin-right: auto;
+    }
+
+    .bouton-hamburger {
+        display: flex;
+    }
+
+    .menu {
+        order: 4;
+        width: 100%;
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease;
+    }
+
+    .menu.menu-ouvert {
+        max-height: 300px;
+    }
+
+    .menu ul {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 4px;
+        padding-top: 10px;
+    }
+
+    .menu ul li a {
+        display: block;
+        text-align: center;
+        padding: 10px;
+    }
+
+    .notif-conteneur {
+        order: 2;
+    }
+
+    .hero {
+        padding: 40px 16px 28px;
+    }
+
+    .galerie {
+        grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+        gap: 14px;
+        padding: 22px 14px 40px;
+    }
+
+    .carte img {
+        height: 140px;
+    }
+
+    .panneau-notif {
+        width: 92vw;
+        right: -6px;
+        left: auto;
+        max-height: 70vh;
+    }
+
+    .profil {
+        padding: 24px 18px;
+    }
+
+    .reserve {
+        padding: 14px 12px 40px;
+    }
+
+    .form-ajout {
+        margin: 16px 12px 0;
+        padding: 16px 14px;
+    }
+}
+
+/* ---- Très petit mobile (≤ 380px) ---- */
+@media (max-width: 380px) {
+    .galerie {
+        grid-template-columns: 1fr 1fr;
+        gap: 10px;
+        padding: 18px 10px 32px;
+    }
+
+    .carte-contenu {
+        padding: 10px;
+    }
+
+    .nom-produit {
+        font-size: 14px;
+    }
+
+    .carte .prix {
+        font-size: 14px;
+    }
+
+    .btn-ajouter-panier {
+        font-size: 13px;
+        padding: 7px;
+    }
+
+    .logo {
+        width: 36px;
+        height: 36px;
+        font-size: 11px;
+    }
+
+    .bouton-notif {
+        width: 38px;
+        height: 38px;
+        font-size: 18px;
+    }
+
+    .profil {
+        padding: 20px 14px;
+    }
+
+    .ajoute_profil input {
+        padding: 9px 10px;
+        font-size: 13.5px;
+    }
+}
+
+/* ---- Grand écran (≥ 1400px) ---- */
+@media (min-width: 1400px) {
+    main {
+        max-width: 1300px;
+    }
+
+    .titre-page {
+        max-width: 1300px;
     }
 }
