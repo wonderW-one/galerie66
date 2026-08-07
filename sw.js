@@ -1,6 +1,6 @@
 // Nom et version du cache : change la version à chaque mise à jour du site
 // pour forcer le rechargement des fichiers.
-const CACHE_NAME = "galerie66-cache-v7";
+const CACHE_NAME = "galerie66-cache-v8";
 
 // Liste des fichiers essentiels à mettre en cache dès l'installation.
 // Note : le catalogue de produits et les réservations viennent maintenant
