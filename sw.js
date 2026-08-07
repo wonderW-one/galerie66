@@ -12,6 +12,7 @@ const FICHIERS_A_CACHER = [
     "./admin.html",
     "./login.html",
     "./styles.css",
+    "./menu.js",
     "./script.js",
     "./script-admin.js",
     "./galerie-commun.js",
