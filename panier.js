@@ -97,7 +97,7 @@ function rafraichirAffichagePanier() {
                     <img src="${produit.src}" alt="${produit.nom}">
                     <div class="panier-item-info">
                         <p class="panier-item-nom">${produit.nom}${produit.taille ? ` (${produit.taille})` : ""}</p>
-                        <p class="panier-item-prix">${produit.prix.toFixed(2)} $ x
+                        <p class="panier-item-prix">${produit.prix.toFixed(2)} Fbu x
                             <button class="panier-qte-moins" data-id="${produit.id}">-</button>
                             <span>${produit.quantite}</span>
                             <button class="panier-qte-plus" data-id="${produit.id}">+</button>
